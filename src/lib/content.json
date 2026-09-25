@@ -35,6 +35,14 @@
 
                 }
 
+            },
+            "musicSection" : {
+                "title" : "Music that represent to you",
+                "subtitle": "A special Music for special person",
+                "music" : {
+                    "title" : "The Way I Loved You - Taylor Swift",
+                    "source" : "/music/The-Way-I-Loved-You.mp3"
+                }
             }
         }
     }

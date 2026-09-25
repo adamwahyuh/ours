@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 
 import Envelope from "../../Components/Envelope/Envelope";
 import Title from "../../Components/Texts/Title";
+import Subtitle from '../../Components/Texts/Subtitle';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -57,9 +58,7 @@ export default function EnvelopeSection({ data }: envelopeProps){
 
                         <Title text={data.title} />
 
-                        <p className="max-w-md text-sm sm:text-base font-serif italic text-[#fdf0d5]/90 font-normal leading-relaxed tracking-wide">
-                            {data.subtitle2}
-                        </p>
+                        <Subtitle text={data.subtitle2} />
                     </motion.div>
 
                     {/* Envelope Section dengan Ambient Pedestal */}
