@@ -36,14 +36,168 @@
                 }
 
             },
+
+
             "musicSection" : {
                 "title" : "Music that represent to you",
                 "subtitle": "A special Music for special person",
-                "music" : {
-                    "title" : "The Way I Loved You - Taylor Swift",
-                    "source" : "/music/The-Way-I-Loved-You.mp3"
-                }
+                "musics": [
+                    {
+                        "title": "Begin Again - Taylor Swift",
+                        "source": "/music/Begin-Again.mp3"
+                    },
+                    {
+                        "title": "Red - Taylor Swift",
+                        "source": "/music/Red.mp3"
+                    },
+                    
+                    {
+                        "title": "About You - The 1975",
+                        "source": "/music/About-You.mp3"
+                    }
+                ]
+            },
+
+            "photosGallerySection" : {
+                "title" : "Core memory",
+                "subtitle" : "Forever remember as our love story",
+                "photos" : [
+                    {
+                        "source" : "/images/beach.jpg",
+                        "message" : {
+                            "header" : {
+                                "left" : "",
+                                "right" : "For my special person!"
+                            },
+                            "body" : {
+                                "title" : "Dear my bee",
+                                "messages" : [
+                                    "Ada sebuah pesan kecil dan tulus yang ingin aku sampaikan kepadamu. Terima kasih sudah hadir dan selalu mewarnai hari-hariku dengan senyuman indahmu. zzzzzzz",
+                                    "ne pa \" quote \" "
+                                ]
+                            },
+                            "footer" : {
+                                "right" : {
+                                    "up" : "Ms. Nyebelin",
+                                    "down" : "Forever and always"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source" : "/images/ragunan.jpg",
+                        "message" : {
+                            "header" : {
+                                "left" : "",
+                                "right" : "For my special person!"
+                            },
+                            "body" : {
+                                "title" : "Dear my bee",
+                                "messages" : [
+                                    "Ada sebuah pesan kecil dan tulus yang ingin aku sampaikan kepadamu. Terima kasih sudah hadir dan selalu mewarnai hari-hariku dengan senyuman indahmu. zzzzzzz",
+                                    "ne pa \" quote \" "
+                                ]
+                            },
+                            "footer" : {
+                                "right" : {
+                                    "up" : "Ms. Nyebelin",
+                                    "down" : "Forever and always"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source" : "/images/spiderman.jpg",
+                        "message" : {
+                            "header" : {
+                                "left" : "",
+                                "right" : "For my special person!"
+                            },
+                            "body" : {
+                                "title" : "Dear my bee",
+                                "messages" : [
+                                    "Ada sebuah pesan kecil dan tulus yang ingin aku sampaikan kepadamu. Terima kasih sudah hadir dan selalu mewarnai hari-hariku dengan senyuman indahmu. zzzzzzz",
+                                    "ne pa \" quote \" "
+                                ]
+                            },
+                            "footer" : {
+                                "right" : {
+                                    "up" : "Ms. Nyebelin",
+                                    "down" : "Forever and always"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source" : "/images/spiderman.jpg",
+                        "message" : {
+                            "header" : {
+                                "left" : "",
+                                "right" : "For my special person!"
+                            },
+                            "body" : {
+                                "title" : "Dear my bee",
+                                "messages" : [
+                                    "Ada sebuah pesan kecil dan tulus yang ingin aku sampaikan kepadamu. Terima kasih sudah hadir dan selalu mewarnai hari-hariku dengan senyuman indahmu. zzzzzzz",
+                                    "ne pa \" quote \" "
+                                ]
+                            },
+                            "footer" : {
+                                "right" : {
+                                    "up" : "Ms. Nyebelin",
+                                    "down" : "Forever and always"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source" : "/images/spiderman.jpg",
+                        "message" : {
+                            "header" : {
+                                "left" : "",
+                                "right" : "For my special person!"
+                            },
+                            "body" : {
+                                "title" : "Dear my bee",
+                                "messages" : [
+                                    "Ada sebuah pesan kecil dan tulus yang ingin aku sampaikan kepadamu. Terima kasih sudah hadir dan selalu mewarnai hari-hariku dengan senyuman indahmu. zzzzzzz",
+                                    "ne pa \" quote \" "
+                                ]
+                            },
+                            "footer" : {
+                                "right" : {
+                                    "up" : "Ms. Nyebelin",
+                                    "down" : "Forever and always"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "source" : "/images/spiderman.jpg",
+                        "message" : {
+                            "header" : {
+                                "left" : "",
+                                "right" : "For my special person!"
+                            },
+                            "body" : {
+                                "title" : "Dear my bee",
+                                "messages" : [
+                                    "Ada sebuah pesan kecil dan tulus yang ingin aku sampaikan kepadamu. Terima kasih sudah hadir dan selalu mewarnai hari-hariku dengan senyuman indahmu. zzzzzzz",
+                                    "ne pa \" quote \" "
+                                ]
+                            },
+                            "footer" : {
+                                "right" : {
+                                    "up" : "Ms. Nyebelin",
+                                    "down" : "Forever and always"
+                                }
+                            }
+                        }
+                    }
+
+                ]
             }
+
         }
     }
 }

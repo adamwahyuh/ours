@@ -17,3 +17,7 @@
 @theme {
   --font-windsong: 'WindSongKustom', "WindSong", cursive;
 }
+
+* {
+  cursor: url("/icons/paw.png") -16 -28, auto;
+}

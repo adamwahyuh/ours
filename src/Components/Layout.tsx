@@ -39,7 +39,7 @@ export default function Layout({ children }: LayoutProps) {
             )}
 
             {/* Main Content Wrapper */}
-            <main className="mt-15">
+            <main className="">
                 {children}
             </main>
 

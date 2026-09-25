@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import Envelope from "../../Components/Envelope/Envelope";
 import Title from "../../Components/Texts/Title";
 import Subtitle from '../../Components/Texts/Subtitle';
+import Devider from '../../Components/Devider/Devider';
 
 const containerVariants = {
     hidden: { opacity: 0 },
@@ -30,7 +31,7 @@ interface envelopeProps {
 
 export default function EnvelopeSection({ data }: envelopeProps){
     return (
-        <div className="relative min-h-[calc(100vh-80px)] w-full overflow-hidden px-4 flex flex-col items-center justify-center">
+        <div className="relative w-full overflow-hidden px-4 flex flex-col items-center justify-center">
                 
                 {/* Visual Ambient Glow  */}
                 <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-amber-500/10 blur-[130px]" />
@@ -57,7 +58,7 @@ export default function EnvelopeSection({ data }: envelopeProps){
                         </div>
 
                         <Title text={data.title} />
-
+                        <Devider />
                         <Subtitle text={data.subtitle2} />
                     </motion.div>
 
