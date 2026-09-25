@@ -1,0 +1,41 @@
+{
+    "homePage" : {
+        "title" : "Happy Birthday!",
+        "sections" : {
+            
+        }
+    },
+    
+    "galleryPage" : {
+        "sections" : {
+            "envelopeSection" : {
+                "subtitle" : "A special letter for special person",
+                "title" : "Open it!",
+                "subtitle2" : "Ada sebuah pesan manis yang tersimpan di sini. Sentuh stempel lilin di bawah untuk membukanya.",
+
+                "envelopeContent" : {
+                    "header" : {
+                        "left" : "",
+                        "right" : "For my special person!"
+                    },
+                    "body" : {
+                        "title" : "Dear my bee",
+                        "messages" : [
+                            "Ada sebuah pesan kecil dan tulus yang ingin aku sampaikan kepadamu. Terima kasih sudah hadir dan selalu mewarnai hari-hariku dengan senyuman indahmu. zzzzzzz",
+                            "ne pa \" quote \" "
+                        ]
+                    },
+                    "footer" : {
+                        "left" : "Ms.Nyebelin",
+                        "right" : {
+                            "up" : "With Love",
+                            "down" : "Forever and always"
+                        }
+                    }
+
+                }
+
+            }
+        }
+    }
+}
