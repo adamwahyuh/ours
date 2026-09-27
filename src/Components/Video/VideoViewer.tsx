@@ -18,6 +18,7 @@ export default function VideoViewer({
     const [isMuted, setIsMuted] = useState(false)
     const [showHeart, setShowHeart] = useState(false)
     const [isFullscreen, setIsFullscreen] = useState(false)
+    src = "/birthday" + src
 
     useEffect(() => {
         const handleFullscreenChange = () => {

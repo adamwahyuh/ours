@@ -8,6 +8,7 @@ function Polaroid({
 }) {
     const [isHovered, setIsHovered] = useState(false);
 
+    path = "/birthday" + path
     return (
         <div 
             className="w-fit bg-white p-4 pb-12 shadow-md transition-all duration-300 ease-out hover:shadow-2xl hover:z-10 cursor-pointer border border-gray-100"
