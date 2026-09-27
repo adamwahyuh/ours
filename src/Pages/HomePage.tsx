@@ -1,4 +1,5 @@
 import { motion } from "framer-motion"
+import type { Variants } from "framer-motion"
 import Polaroid from "../Components/Photo/Polaroid"
 import Title from "../Components/Texts/Title"
 import Layout from "../Components/Layout"
@@ -28,9 +29,9 @@ const riseVariants = {
         y: 0,
         transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
     },
-}
+} as const
 
-const polaroidVariants = {
+const polaroidVariants: Variants = {
     hidden: (rotation: number) => ({
         opacity: 0,
         y: -60,
