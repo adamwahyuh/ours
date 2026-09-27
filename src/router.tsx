@@ -11,6 +11,6 @@ const router = createBrowserRouter([
         path:"/happy-birthday",
         element: <GalleryPage />
     }
-])
+], {basename : "/birthday"})
 
 export default router
