@@ -5,6 +5,7 @@ import FloatingHearts from "../Components/Support/FloatingHeart";
 import MusicSection from "./Section/Music.Gallery";
 import PhotosGallerySection from "./Section/Photos.Gallery";
 import { motion } from "framer-motion"; // Import framer-motion
+import VideoSection from "./Section/Video.Gallery";
 
 let envelopeContent: any = getContentFromSectionPage("galleryPage", "envelopeSection")
 envelopeContent = envelopeContent.data
@@ -14,6 +15,9 @@ musicContent = musicContent.data
 
 let photosGalleryContent: any = getContentFromSectionPage("galleryPage", "photosGallerySection")
 photosGalleryContent = photosGalleryContent.data
+
+let videoContent: any = getContentFromSectionPage("galleryPage", "videoSection")
+videoContent = videoContent.data
 
 export default function GalleryPage() {
     // Konfigurasi animasi slide ke atas untuk setiap section
@@ -63,6 +67,15 @@ export default function GalleryPage() {
                     <PhotosGallerySection data={photosGalleryContent} />
                 </motion.div>
 
+                <motion.div 
+                    className="snap-start min-h-screen w-full flex items-center justify-center"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: false, amount: 0.3 }}
+                    variants={slideUpVariants}
+                >
+                    <VideoSection data={videoContent} />
+                </motion.div>
             </div>
         </Layout>
     );
