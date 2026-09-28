@@ -15,6 +15,8 @@ interface WaveformPlayerProps {
 export default function WaveformPlayer({ audioSrc, title, width = "100%", height = 96, barCount = 48, className = "", onPlay }: WaveformPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  audioSrc = "/birthday" + audioSrc
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
 

@@ -1,8 +1,24 @@
 {
     "homePage" : {
-        "title" : "Happy Birthday!",
         "sections" : {
-            
+            "homeSection" : {
+                "title" : "Happy Birthday!",
+                "subtitle" : "Hello, I have Suprise for you!",
+                "photos" : [
+                    {
+                        "source" :"/images/beach.jpg",
+                        "caption" : "Beach"
+                    },
+                    {
+                        "source" :"/images/ragunan.jpg",
+                        "caption" : "Ragunan"
+                    },
+                    {
+                        "source" :"/images/spiderman.jpg",
+                        "caption" : "Spiderman"
+                    }
+                ]
+            }
         }
     },
     
@@ -206,6 +222,16 @@
                     }
 
                 ]
+            },
+
+            "videoSection" : {
+                "title" : "Our Memories..",
+                "subtitle" : "Forever remember as our love storyz",
+                "video" : {
+                    "source" : "/videos/Momemts.mp4",
+                    "caption" : "Our Memories in Video",
+                    "subcaption" : "Every second with you, kept forever.."
+                }
             }
 
         }
