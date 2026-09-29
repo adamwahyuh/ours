@@ -16,6 +16,6 @@ const router = createBrowserRouter([
         path : "*",
         element : <NotFoundPage />
     }
-], {basename : "/birthday"})
+], {basename : "/ours"})
 
 export default router

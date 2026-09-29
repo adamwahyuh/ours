@@ -25,7 +25,7 @@ export default function PhotoWithModal({
   const [isOpen, setIsOpen] = useState(false)
   const [isVisible, setIsVisible] = useState(false)
 
-  src = "/birthday" + src
+  src = "/ours" + src
   // Close on Escape
   useEffect(() => {
     if (!isOpen) return
