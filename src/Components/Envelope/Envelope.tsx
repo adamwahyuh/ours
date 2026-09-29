@@ -9,7 +9,7 @@ function Envelope({
     message = (
         <div className="pt-2">
             <h2 className="mb-4 font-serif text-3xl font-bold italic text-[#2c241b]">
-                Hello ❤️
+                Hello ❤️️
             </h2>
             <p className="font-serif text-lg leading-[32px] text-[#4a3f32]">
                 Ini adalah pesan rahasia yang tersembunyi di dalam amplop.
@@ -157,7 +157,7 @@ function Envelope({
                 </div>
             </div>
 
-            {/* Modal isi surat  */}
+            {/* Modal isi surat */}
             <AnimatePresence>
                 {showModal && (
                     <motion.div
@@ -168,15 +168,9 @@ function Envelope({
                         onClick={handleClose}
                     >
                         <motion.div
-                            // Desain ala Kertas
-                            className="relative w-full max-w-xl rounded-sm bg-[#fcfaf5] px-8 pb-12 pt-16 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]"
-                            style={{
-                                // Garis-garis buku tulis
-                                backgroundImage:
-                                    'repeating-linear-gradient(transparent, transparent 31px, #e2d5bd 31px, #e2d5bd 32px)',
-                                backgroundAttachment: 'local',
-                            }}
-                            // Animasi muncul sedikit memutar seperti kertas jatuh
+                            // Desain Kertas Utama (diberi batas tinggi max 85vh)
+                            className="relative flex max-h-[85vh] w-full max-w-xl flex-col rounded-sm bg-[#fcfaf5] shadow-[0_20px_60px_-15px_rgba(0,0,0,0.6)]"
+                            // Animasi muncul seperti kertas jatuh
                             initial={{ opacity: 0, y: 50, rotate: -3, scale: 0.9 }}
                             animate={{ opacity: 1, y: 0, rotate: 0, scale: 1 }}
                             exit={{ opacity: 0, y: 30, rotate: 2, scale: 0.95 }}
@@ -189,7 +183,7 @@ function Envelope({
                         >
                             {/* Efek Selotip (Tape) di atas kertas */}
                             <div 
-                                className="absolute -top-3 left-1/2 h-8 w-28 -translate-x-1/2 rotate-1 bg-white/40 backdrop-blur-md shadow-sm"
+                                className="pointer-events-none absolute -top-3 left-1/2 z-20 h-8 w-28 -translate-x-1/2 rotate-1 bg-white/40 backdrop-blur-md shadow-sm"
                                 style={{ 
                                     border: '1px solid rgba(255,255,255,0.4)', 
                                     borderLeft: '2px dotted rgba(255,255,255,0.6)', 
@@ -197,17 +191,29 @@ function Envelope({
                                 }} 
                             />
 
+                            {/* Tombol Tutup (tetap melayang di posisi kanan atas) */}
                             <button
                                 type="button"
                                 onClick={handleClose}
                                 aria-label="Tutup"
-                                className="absolute right-5 top-5 flex h-8 w-8 items-center justify-center rounded-full bg-black/5 text-2xl text-gray-500 transition-colors hover:bg-black/10 hover:text-gray-800"
+                                className="absolute right-4 top-4 z-20 flex h-8 w-8 items-center justify-center rounded-full bg-black/5 text-2xl text-gray-500 transition-colors hover:bg-black/10 hover:text-gray-800"
                             >
                                 ×
                             </button>
 
-                            <div className="relative z-10">
-                                {message}
+                            {/* Container Konten yang Bisa Di-scroll */}
+                            <div
+                                className="overflow-y-auto px-6 sm:px-8 pb-12 pt-16 rounded-sm"
+                                style={{
+                                    // Garis-garis buku tulis
+                                    backgroundImage:
+                                        'repeating-linear-gradient(transparent, transparent 31px, #e2d5bd 31px, #e2d5bd 32px)',
+                                    backgroundAttachment: 'local',
+                                }}
+                            >
+                                <div className="relative z-10">
+                                    {message}
+                                </div>
                             </div>
                         </motion.div>
                     </motion.div>
