@@ -66,10 +66,10 @@ export default function VideoViewer({
     }
 
     return (
-        <div className="relative w-full max-w-6xl mx-auto px-4">
-            <div className="absolute -inset-4 bg-gradient-to-br from-[#fdf0d5]/20 via-transparent to-[#fdf0d5]/10 blur-2xl rounded-[2rem] pointer-events-none" />
+        <div className="relative w-full max-w-4xl mx-auto px-4">
+            <div className="absolute -inset-4 bg-gradient-to-br from-rosewood/30 via-gold/10 to-blush/20 blur-3xl rounded-[2rem] pointer-events-none" />
 
-            <div className="relative rounded-3xl p-[3px] bg-gradient-to-br from-[#fdf0d5]/70 via-[#fdf0d5]/20 to-[#fdf0d5]/70 shadow-2xl shadow-black/40">
+            <div className="relative rounded-3xl p-[3px] bg-gradient-to-br from-gold via-blush/40 to-gold shadow-[0_30px_80px_-20px_rgba(0,0,0,0.8)]">
                 <div
                     ref={containerRef}
                     className={`relative overflow-hidden bg-black group ${
@@ -79,10 +79,10 @@ export default function VideoViewer({
                     }`}
                     onDoubleClick={handleDoubleClick}
                 >
-                    <span className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-[#fdf0d5]/70 rounded-tl-md z-20" />
-                    <span className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-[#fdf0d5]/70 rounded-tr-md z-20" />
-                    <span className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-[#fdf0d5]/70 rounded-bl-md z-20" />
-                    <span className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-[#fdf0d5]/70 rounded-br-md z-20" />
+                    <span className="absolute top-3 left-3 w-6 h-6 border-t-2 border-l-2 border-champagne/70 rounded-tl-md z-20" />
+                    <span className="absolute top-3 right-3 w-6 h-6 border-t-2 border-r-2 border-champagne/70 rounded-tr-md z-20" />
+                    <span className="absolute bottom-3 left-3 w-6 h-6 border-b-2 border-l-2 border-champagne/70 rounded-bl-md z-20" />
+                    <span className="absolute bottom-3 right-3 w-6 h-6 border-b-2 border-r-2 border-champagne/70 rounded-br-md z-20" />
 
                     <video
                         ref={videoRef}
@@ -99,11 +99,11 @@ export default function VideoViewer({
                         <source src={src} />
                     </video>
 
-                    <div className="absolute top-0 left-0 right-0 px-8 pt-6 pb-10 bg-gradient-to-b from-black/70 via-black/20 to-transparent pointer-events-none z-10">
-                        <p className="font-serif italic text-[#fdf0d5] text-lg sm:text-xl tracking-wide drop-shadow-md">
+                    <div className="absolute top-0 left-0 right-0 px-8 pt-6 pb-10 bg-gradient-to-b from-wine-950/80 via-wine-950/20 to-transparent pointer-events-none z-10">
+                        <p className="font-windsong text-champagne text-3xl sm:text-4xl tracking-wide drop-shadow-md">
                             {caption}
                         </p>
-                        <p className="text-[#fdf0d5]/70 text-[11px] sm:text-xs tracking-[0.2em] uppercase mt-1">
+                        <p className="font-serif italic text-blush/80 text-sm sm:text-base tracking-wide mt-1">
                             {subCaption}
                         </p>
                     </div>
@@ -114,17 +114,17 @@ export default function VideoViewer({
                             className="absolute inset-0 flex items-center justify-center z-10"
                             aria-label="Play video"
                         >
-                            <span className="absolute w-20 h-20 rounded-full bg-[#fdf0d5]/10 animate-ping" />
-                            <span className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-[#fdf0d5]/95 shadow-lg shadow-black/50 transition-transform duration-300 hover:scale-110">
-                                <Play className="w-7 h-7 sm:w-8 sm:h-8 text-[#780000] ml-1 fill-[#780000]" />
+                            <span className="absolute w-20 h-20 rounded-full bg-blush/20 animate-ping" />
+                            <span className="relative flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gradient-to-br from-blush to-rosewood ring-1 ring-gold/60 shadow-[0_0_40px_rgba(242,184,198,0.6)] transition-transform duration-300 hover:scale-110">
+                                <Play className="w-7 h-7 sm:w-8 sm:h-8 text-paper ml-1 fill-paper" />
                             </span>
                         </button>
                     )}
 
-                    <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-5 py-4 bg-gradient-to-t from-black/70 via-black/10 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 flex items-center justify-between px-5 py-4 bg-gradient-to-t from-wine-950/80 via-wine-950/10 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <button
                             onClick={togglePlay}
-                            className="flex items-center justify-center w-9 h-9 rounded-full bg-[#fdf0d5]/15 backdrop-blur-sm border border-[#fdf0d5]/30 text-[#fdf0d5] transition-all hover:bg-[#fdf0d5]/25 hover:scale-105"
+                            className="flex items-center justify-center w-9 h-9 rounded-full bg-wine-950/40 backdrop-blur-sm border border-champagne/30 text-champagne transition-all hover:bg-rosewood/50 hover:scale-105"
                         >
                             {isPlaying ? (
                                 <Pause className="w-4 h-4" />
@@ -136,7 +136,7 @@ export default function VideoViewer({
                         <div className="flex items-center gap-2">
                             <button
                                 onClick={toggleMute}
-                                className="flex items-center justify-center w-9 h-9 rounded-full bg-[#fdf0d5]/15 backdrop-blur-sm border border-[#fdf0d5]/30 text-[#fdf0d5] transition-all hover:bg-[#fdf0d5]/25 hover:scale-105"
+                                className="flex items-center justify-center w-9 h-9 rounded-full bg-wine-950/40 backdrop-blur-sm border border-champagne/30 text-champagne transition-all hover:bg-rosewood/50 hover:scale-105"
                             >
                                 {isMuted ? (
                                     <VolumeX className="w-4 h-4" />
@@ -147,7 +147,7 @@ export default function VideoViewer({
 
                             <button
                                 onClick={toggleFullscreen}
-                                className="flex items-center justify-center w-9 h-9 rounded-full bg-[#fdf0d5]/15 backdrop-blur-sm border border-[#fdf0d5]/30 text-[#fdf0d5] transition-all hover:bg-[#fdf0d5]/25 hover:scale-105"
+                                className="flex items-center justify-center w-9 h-9 rounded-full bg-wine-950/40 backdrop-blur-sm border border-champagne/30 text-champagne transition-all hover:bg-rosewood/50 hover:scale-105"
                             >
                                 {isFullscreen ? (
                                     <Minimize className="w-4 h-4" />
@@ -161,7 +161,7 @@ export default function VideoViewer({
                     {showHeart && (
                         <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
                             <Heart
-                                className="w-24 h-24 text-[#fdf0d5] fill-[#fdf0d5] animate-[ping_0.8s_ease-out] drop-shadow-lg"
+                                className="w-24 h-24 text-blush fill-blush animate-[ping_0.8s_ease-out] drop-shadow-lg"
                             />
                         </div>
                     )}

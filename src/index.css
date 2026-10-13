@@ -7,17 +7,98 @@
   font-style: normal;
 }
 
-
-.font-betani{
-  font-family: "Betania Patmos In", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
 @theme {
   --font-windsong: 'WindSongKustom', "WindSong", cursive;
+  --font-serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+
+  /* Candlelit palette */
+  --color-wine-950: #1f060d;
+  --color-wine-900: #2e0914;
+  --color-wine-800: #4a0f20;
+  --color-wine-700: #6d1630;
+  --color-rosewood: #a8385a;
+  --color-blush: #f2b8c6;
+  --color-petal: #f9d9e0;
+  --color-cream: #fdf0d5;
+  --color-champagne: #f6e3c3;
+  --color-gold: #e2bf86;
+  --color-ink: #3b1a22;
+  --color-paper: #fff8f1;
+
+  --animate-petal-fall: petal-fall var(--petal-duration, 14s) linear infinite;
+  --animate-twinkle: twinkle 3.5s ease-in-out infinite;
+  --animate-glow-breathe: glow-breathe 7s ease-in-out infinite;
+  --animate-spin-slow: spin 6s linear infinite;
+  --animate-heartbeat: heartbeat 1.6s ease-in-out infinite;
+
+  @keyframes petal-fall {
+    0% { transform: translate3d(0, -10vh, 0) rotate(0deg); opacity: 0; }
+    10% { opacity: var(--petal-opacity, 0.8); }
+    50% { transform: translate3d(var(--petal-drift, 40px), 50vh, 0) rotate(200deg); }
+    90% { opacity: var(--petal-opacity, 0.8); }
+    100% { transform: translate3d(calc(var(--petal-drift, 40px) * -0.5), 110vh, 0) rotate(420deg); opacity: 0; }
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(0.8); }
+    50% { opacity: 1; transform: scale(1.15); }
+  }
+  @keyframes glow-breathe {
+    0%, 100% { opacity: 0.55; transform: translate(-50%, -50%) scale(1); }
+    50% { opacity: 0.9; transform: translate(-50%, -50%) scale(1.12); }
+  }
+  @keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.18); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.12); }
+  }
+}
+
+html, body {
+  background: var(--color-wine-950);
+  color: var(--color-cream);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-blush) 45%, transparent);
+  color: var(--color-paper);
+}
+
+/* Gold-to-blush shimmer for script headings */
+.text-romance {
+  background: linear-gradient(100deg, #f6e3c3 0%, #fdf0d5 30%, #f2b8c6 55%, #e2bf86 80%, #f6e3c3 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 9s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+/* Fine film grain over the whole page */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.07;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 * {
   cursor: url("/icons/paw.png") -16 -28, auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -30,77 +30,66 @@ interface envelopeProps {
 }
 
 export default function EnvelopeSection({ data }: envelopeProps){
+    const letter = data.envelopeContent;
+
     return (
-        <div className="relative w-full overflow-hidden px-4 flex flex-col items-center justify-center">
-                
-                {/* Visual Ambient Glow  */}
-                <div className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-amber-500/10 blur-[130px]" />
-                <div className="pointer-events-none absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[300px] w-[300px] rounded-full bg-rose-500/10 blur-[100px]" />
-
-
-                {/* Konten Utama dengan Staggered Animation */}
+        <div className="relative w-full px-4 py-16 flex flex-col items-center justify-center">
                 <motion.div
-                    className="relative z-10 flex flex-col items-center justify-center w-full max-w-3xl gap-8"
+                    className="relative z-10 flex flex-col items-center justify-center w-full max-w-3xl gap-10"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                 >
-                    {/* Header Section */}
                     <motion.div
-                        className="flex flex-col items-center text-center gap-3"
+                        className="flex flex-col items-center text-center gap-2"
                         variants={itemVariants}
                     >
-                        {/* Sub-header Vintage */}
-                        <div className="flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-[#e8d5c4]/80 font-sans">
-                            <span className="h-[1px] w-6 bg-[#e8d5c4]/30" />
+                        <div className="flex items-center gap-3 text-[11px] uppercase tracking-[0.35em] text-gold/80 font-sans">
+                            <span className="h-px w-8 bg-gold/40" />
                             <span>{data.subtitle}</span>
-                            <span className="h-[1px] w-6 bg-[#e8d5c4]/30" />
+                            <span className="h-px w-8 bg-gold/40" />
                         </div>
 
                         <Title text={data.title} />
-                        <Devider />
+                        <Devider className="!py-3" />
                         <Subtitle text={data.subtitle2} />
                     </motion.div>
 
-                    {/* Envelope Section dengan Ambient Pedestal */}
                     <motion.div
-                        className="relative my-2 flex items-center justify-center w-full"
+                        className="relative flex items-center justify-center w-full"
                         variants={itemVariants}
                     >
                         <Envelope
                             message={
-                                <div className="flex flex-col text-left font-serif text-[#2a221b] px-1 sm:px-2">
-                                    {/* Header Surat Vintage */}
-                                    <div className="mb-6 flex items-center justify-between border-b border-[#d8c3b0]/60 pb-3 text-[11px] font-sans tracking-widest text-[#8c7355] uppercase">
-                                        <span>{data.envelopeContent.header.left}</span>
-                                        <span>{data.envelopeContent.header.right}</span>
+                                <div className="flex flex-col text-left font-serif text-ink">
+                                    <div className="mb-6 flex items-center justify-between border-b border-rosewood/20 pb-3 text-[11px] font-sans tracking-[0.25em] text-rosewood/80 uppercase">
+                                        <span>{letter.header.left}</span>
+                                        <span>{letter.header.right}</span>
                                     </div>
 
-                                    {/* Judul Surat */}
-                                    <h2 className="mb-4 text-2xl sm:text-3xl font-bold italic text-[#1c140d] tracking-tight">
-                                        {data.envelopeContent.body.title}
+                                    <h2 className="mb-4 font-windsong text-4xl sm:text-5xl text-rosewood leading-tight">
+                                        {letter.body.title}
                                     </h2>
 
-                                    {/* Isi Pesan Surat */}
-                                    {data.envelopeContent.body.messages.map((msg : string, idx : number) => {
-                                        return(
-                                            <p className={`text-base sm:text-lg leading-[32px] text-[#4a3b2c] font-serif ${idx > 0 ? 'mt-4' : ''}`}>
-                                                {msg}
-                                            </p>
-                                        )
-                                    })}
+                                    {letter.body.messages.map((msg : string, idx : number) => (
+                                        <p
+                                            key={idx}
+                                            className={`text-lg sm:text-xl leading-[32px] text-ink/90 ${idx === 0 ? 'first-letter:float-left first-letter:mr-2 first-letter:font-windsong first-letter:text-6xl first-letter:leading-[0.9] first-letter:text-rosewood' : 'mt-4'}`}
+                                        >
+                                            {msg}
+                                        </p>
+                                    ))}
 
-                                    {/* Footer / Tanda Tangan Surat */}
-                                    <div className="mt-8 border-t border-[#d8c3b0]/60 pt-4 flex items-end justify-between">
-                                        <div className="text-[10px] font-sans tracking-widest text-[#a08a72] uppercase">
-                                            {data.envelopeContent.footer.left}
+                                    <div className="mt-10 border-t border-rosewood/20 pt-4 flex items-end justify-between">
+                                        <div className="text-[10px] font-sans tracking-[0.25em] text-rosewood/60 uppercase">
+                                            {letter.footer.left}
                                         </div>
                                         <div className="flex flex-col items-end">
-                                            <span className="font-serif italic text-base text-[#7c3a3a] font-semibold">
-                                                {data.envelopeContent.footer.right.up}
+                                            <span className="font-windsong text-4xl text-rosewood leading-tight">
+                                                {letter.footer.right.up}
                                             </span>
-                                            <span className="text-xs font-serif text-[#665343] italic">
-                                                {data.envelopeContent.footer.right.down}
+                                            <span className="text-sm font-serif text-ink/60 italic">
+                                                {letter.footer.right.down}
                                             </span>
                                         </div>
                                     </div>
@@ -108,7 +97,6 @@ export default function EnvelopeSection({ data }: envelopeProps){
                             }
                         />
                     </motion.div>
-
                 </motion.div>
             </div>
     )

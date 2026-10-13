@@ -1,34 +1,25 @@
-import { useState } from "react"
-
-function Polaroid({ 
-    path = '', 
-    alt = 'Polaroid', 
-    caption = 'Memories', 
-    rotation = 0 
+function Polaroid({
+    path = '',
+    alt = 'Polaroid',
+    caption = 'Memories',
 }) {
-    const [isHovered, setIsHovered] = useState(false);
-
     path = "/ours" + path
     return (
-        <div 
-            className="w-fit bg-white p-4 pb-12 shadow-md transition-all duration-300 ease-out hover:shadow-2xl hover:z-10 cursor-pointer border border-gray-100"
-            style={{ 
-                // Menggunakan inline style agar nilai rotasi dinamis dari prop bisa diterapkan
-                transform: `rotate(${isHovered ? 0 : rotation}deg) scale(${isHovered ? 1.05 : 1})` 
-            }}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-        >
-            <img 
-                // Menggunakan aspect-square agar proporsi gambar rapi seperti polaroid asli
-                className="block aspect-square w-64 object-cover bg-gray-50" 
-                src={path} 
-                alt={alt} 
+        <figure className="relative w-fit bg-paper p-2 pb-10 sm:p-3 sm:pb-14 md:p-4 md:pb-16 rounded-[3px] shadow-[0_20px_40px_-12px_rgba(0,0,0,0.65)] transition-shadow duration-500 hover:shadow-[0_30px_60px_-12px_rgba(168,56,90,0.55)]">
+
+            <img
+                className="block aspect-[4/5] w-24 sm:w-40 md:w-52 object-cover bg-petal/30 saturate-[1.05] sepia-[0.12]"
+                src={path}
+                alt={alt}
+                loading="lazy"
             />
-            <p className="mt-4 text-center font-betani text-2xl text-gray-800 tracking-wide">
+            {/* Warm glow wash over the photo */}
+            <span className="pointer-events-none absolute inset-x-2 top-2 sm:inset-x-3 sm:top-3 md:inset-x-4 md:top-4 aspect-[4/5] bg-gradient-to-tr from-rosewood/15 via-transparent to-gold/15 mix-blend-soft-light" />
+
+            <figcaption className="absolute inset-x-0 bottom-1 sm:bottom-2 md:bottom-3 text-center font-windsong text-xl sm:text-2xl md:text-3xl text-wine-800">
                 {caption}
-            </p>
-        </div>
+            </figcaption>
+        </figure>
     );
 }
 

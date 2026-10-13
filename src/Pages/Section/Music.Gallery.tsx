@@ -25,25 +25,24 @@ export default function MusicSection({data}: MusicSectionProps) {
     };
 
     return (
-        <div className="flex max-w-3xl flex-col items-center justify-center">
-        <Title text={data.title} />
+        <div className="flex w-full max-w-2xl flex-col items-center justify-center px-4 py-16">
+            <Title text={data.title} />
+            <div className="mt-2">
+                <Subtitle text={data.subtitle} />
+            </div>
 
-        <div className="mt-4">
-            <Subtitle text={data.subtitle} />
-        </div>
+            <Devider />
 
-        <Devider />
-
-        {data.musics.map((music : any, idx : number) => {
-            return(
-                <WaveformPlayer
-                    key={idx}
-                    audioSrc={music.source}
-                    title={music.title}
-                    onPlay={handlePlay}
-                />
-            )
-        })}
+            <div className="flex w-full flex-col gap-4">
+                {data.musics.map((music : any, idx : number) => (
+                    <WaveformPlayer
+                        key={idx}
+                        audioSrc={music.source}
+                        title={music.title}
+                        onPlay={handlePlay}
+                    />
+                ))}
+            </div>
         </div>
     );
 }

@@ -8,7 +8,7 @@ interface props{
 }
 export default function VideoSection({data} : props){
     return(
-        <div className="flex flex-col justify-center items-center">
+        <div className="flex w-full flex-col justify-center items-center py-16">
             <Title text={data.title} />
             <Subtitle text={data.subtitle} />
             <Devider />

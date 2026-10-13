@@ -12,25 +12,26 @@ interface WaveformPlayerProps {
   onPlay?: (audio: HTMLAudioElement) => void;
 }
 
-export default function WaveformPlayer({ audioSrc, title, width = "100%", height = 96, barCount = 48, className = "", onPlay }: WaveformPlayerProps) {
+export default function WaveformPlayer({ audioSrc, title, width = "100%", height = 56, barCount = 48, className = "", onPlay }: WaveformPlayerProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
-  audioSrc = "/ours" + audioSrc
+  const src = "/ours" + audioSrc
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  // Gentle, organic-looking bar shape (stable between renders)
   const barHeights = useMemo(
     () =>
       Array.from(
         { length: barCount },
-        () => 0.25 + Math.random() * 0.75
+        (_, i) => 0.25 + 0.75 * Math.abs(Math.sin(i * 1.7) * Math.cos(i * 0.45))
       ),
     [barCount]
   );
 
   useEffect(() => {
-    const audio = new Audio(audioSrc);
+    const audio = new Audio(src);
 
     audioRef.current = audio;
 
@@ -45,13 +46,8 @@ export default function WaveformPlayer({ audioSrc, title, width = "100%", height
       setProgress(0);
     };
 
-    const handlePause = () => {
-      setIsPlaying(false);
-    };
-
-    const handlePlay = () => {
-      setIsPlaying(true);
-    };
+    const handlePause = () => setIsPlaying(false);
+    const handlePlay = () => setIsPlaying(true);
 
     audio.addEventListener("timeupdate", handleTimeUpdate);
     audio.addEventListener("ended", handleEnded);
@@ -66,7 +62,7 @@ export default function WaveformPlayer({ audioSrc, title, width = "100%", height
 
       audio.pause();
     };
-  }, [audioSrc]);
+  }, [src]);
 
   const togglePlay = async () => {
     const audio = audioRef.current;
@@ -87,83 +83,78 @@ export default function WaveformPlayer({ audioSrc, title, width = "100%", height
     }
   };
 
-  const handleSeek = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
+  const handleSeek = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const audio = audioRef.current;
 
     if (!audio || !audio.duration) return;
 
     const rect = e.currentTarget.getBoundingClientRect();
-
     const clickX = e.clientX - rect.left;
-
-    const seekTime =
-      (clickX / rect.width) * audio.duration;
-
-    audio.currentTime = seekTime;
+    audio.currentTime = (clickX / rect.width) * audio.duration;
   };
 
-  const playedBars = Math.round(
-    (progress / 100) * barCount
-  );
+  const playedBars = Math.round((progress / 100) * barCount);
+  const [song, artist] = (title ?? "").split(" - ");
 
   return (
     <div
-      className={`flex flex-col items-center gap-3 sm:gap-4 ${className}`}
-      style={{
-        width:
-          typeof width === "number"
-            ? `${width}px`
-            : width,
-      }}
+      className={`group relative flex items-center gap-4 sm:gap-5 rounded-2xl border px-4 py-3 sm:px-5 sm:py-4 backdrop-blur-md transition-all duration-500 ${
+        isPlaying
+          ? "border-gold/50 bg-wine-800/50 shadow-[0_0_40px_-8px_rgba(242,184,198,0.45)]"
+          : "border-champagne/15 bg-wine-950/30 hover:border-champagne/30 hover:bg-wine-900/40"
+      } ${className}`}
+      style={{ width: typeof width === "number" ? `${width}px` : width }}
     >
-      {title && (
-        <span className="w-full text-left text-[#fdf0d5]/90 text-xs sm:text-sm font-sans tracking-[0.2em] uppercase font-semibold">
-          {title}
-        </span>
-      )}
-
-      <div className="flex items-center gap-3 sm:gap-4 w-full">
-        <button
-          onClick={togglePlay}
-          aria-label={isPlaying ? "Pause" : "Play"}
-          className="cursor-pointer flex-shrink-0 flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 rounded-full border border-white/20 bg-black/20 backdrop-blur-md text-[#fdf0d5] shadow-lg shadow-black/20 transition-all duration-300 hover:border-white/35 hover:bg-black/30 hover:scale-105 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#fdf0d5]/40"
+      {/* Vinyl record with play button as its label */}
+      <button
+        onClick={togglePlay}
+        aria-label={isPlaying ? "Pause" : "Play"}
+        className="relative flex-shrink-0 h-14 w-14 sm:h-16 sm:w-16 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-blush"
+      >
+        <span
+          className={`absolute inset-0 rounded-full shadow-lg shadow-black/50 animate-spin-slow ${isPlaying ? "" : "[animation-play-state:paused]"}`}
+          style={{
+            background:
+              "repeating-radial-gradient(circle at center, #140308 0px, #140308 2px, #2a0a13 3px, #140308 4px)",
+          }}
         >
+          <span className="absolute inset-0 rounded-full bg-[conic-gradient(from_30deg,transparent_0deg,rgba(255,255,255,0.12)_40deg,transparent_80deg,transparent_180deg,rgba(255,255,255,0.08)_220deg,transparent_260deg)]" />
+        </span>
+        <span className="absolute inset-[30%] flex items-center justify-center rounded-full bg-gradient-to-br from-blush to-rosewood text-paper shadow-inner transition-transform duration-300 group-hover:scale-110">
           {isPlaying ? (
-            <Pause
-              className="w-4 h-4 sm:w-5 sm:h-5"
-              fill="currentColor"
-            />
+            <Pause className="h-3 w-3 sm:h-3.5 sm:w-3.5" fill="currentColor" />
           ) : (
-            <Play
-              className="w-4 h-4 sm:w-5 sm:h-5 ml-0.5 sm:ml-1"
-              fill="currentColor"
-            />
+            <Play className="ml-0.5 h-3 w-3 sm:h-3.5 sm:w-3.5" fill="currentColor" />
           )}
-        </button>
+        </span>
+      </button>
+
+      <div className="flex min-w-0 flex-1 flex-col gap-1.5">
+        {title && (
+          <div className="flex items-baseline gap-2 truncate">
+            <span className="truncate font-serif text-lg sm:text-xl italic text-champagne">{song}</span>
+            {artist && (
+              <span className="truncate text-[10px] sm:text-[11px] font-sans uppercase tracking-[0.25em] text-blush/70">
+                {artist}
+              </span>
+            )}
+          </div>
+        )}
 
         <div
-          className="relative flex-1 flex items-center gap-[2px] sm:gap-[3px] cursor-pointer"
-          style={{
-            height:
-              typeof height === "number"
-                ? `${height}px`
-                : height,
-          }}
+          className="relative flex items-center gap-[2px] sm:gap-[3px] cursor-pointer"
+          style={{ height: typeof height === "number" ? `${height}px` : height }}
           onClick={handleSeek}
         >
           {barHeights.map((h, idx) => (
             <div
               key={idx}
-              className={`flex-1 rounded-full transition-colors duration-150 ${
+              className={`flex-1 rounded-full transition-colors duration-200 ${
                 idx < playedBars
-                  ? "bg-[#fdf0d5]"
-                  : "bg-white/30"
+                  ? "bg-gradient-to-t from-rosewood via-blush to-champagne"
+                  : "bg-champagne/20"
               }`}
-              style={{
-                height: `${h * 100}%`,
-              }}
+              style={{ height: `${h * 100}%` }}
             />
           ))}
         </div>
